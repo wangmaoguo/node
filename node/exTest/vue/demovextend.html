@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            line-height: 30px;
+            padding: 10px;
+        }
+        input[type="radio"],input[type="checkbox"]{
+            height: 20px;
+            width: 20px;
+        }
+        input, select{
+            height: 30px;
+            margin: 5px;
+            padding-left: 5px;
+        }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="box">
+        <who></who><!-- 使用和组件名称相同的html标签调用 -->
+    </div>
+
+<script>
+     var item = Vue.extend({
+         data:function(){
+             return{
+                 msg:"他是小明"
+             }
+         },
+         template:"<h1 @click='change'>{{msg}}</h1>",
+         methods:{
+             change:function(){
+                 this.msg = 'yes，他就是小明'
+             }
+         }
+     });
+
+     Vue.component("who",item);
+     new Vue({
+         el:"#box",
+         data:{
+             
+         }
+     })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            line-height: 30px;
+            padding: 10px;
+        }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="box">
+    <button v-on:click="clickFn">{{value}}</button>
+    <button @click="clickFn">{{value}}</button>
+
+</div>
+
+<script>
+    var vm = new Vue({
+        el:"#box",
+        data:{
+            value:"按钮"
+        },
+        methods:{
+            clickFn:function(){
+                this.value = "点击了按钮";  //这里的this.value，可以直接调用或修改 data中的value的值。
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

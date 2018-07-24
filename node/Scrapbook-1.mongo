@@ -1,0 +1,1 @@
+db.t1.insert({"name":"test"})

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            line-height: 30px;
+            padding: 10px;
+        }
+        input[type="radio"],input[type="checkbox"]{
+            height: 20px;
+            width: 20px;
+        }
+        input, select{
+            height: 30px;
+            margin: 5px;
+            padding-left: 5px;
+        }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="box">
+    <p>单选框：</p>
+    <input type="radio" value="a" v-model="raVal" name="sex" />
+    <input type="radio" value="b" v-model="raVal"  name="sex" />  <!-- radio中 选中哪个  -->
+    <p>复选框：</p>
+    <input type="checkbox" v-model="cheVal[0]" />  <!-- check中，选中 为true  不选为 false   用value无意义 , 当js data中给值了，会自动转化成 boolean再确定是否选中-->
+    <input type="checkbox" v-model="cheVal[1]" />  <!-- check中，选中 为true  不选为 false   用value无意义 , 当js data中给值了，会自动转化成 boolean再确定是否选中-->
+    <p>输入框：</p>
+    <input type="text" v-model="msg"/>
+    {{msg}}<br/>
+    <p>下拉框</p>
+    <select v-model="seVal" >  <!-- 当选中某个选项，选项对应的 value值就会绑定给 seVal -->
+        <option value="" selected>--chose--</option>
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+    </select>
+    <br/>
+    {{raVal}}<br/> <!--  显示 单选框对应的值 -->
+    {{cheVal}}<br/><!--  显示 复选框对应的值 -->
+    选择的是：{{seVal}}<br/><!--  显示 下拉框对应的值 -->
+</div>
+
+<script>
+    new Vue({
+        el:"#box",
+        data:{
+            msg:"hello world ! ",
+            raVal:"",           //存放单选框对应的值
+            cheVal:["",""],     //存放复选框对应的值
+            seVal:""            //存放下拉框对应的值
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            line-height: 30px;
+            padding: 10px;
+        }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="box">
+        <p v-html="value"></p>
+    </div>
+    
+    <script>
+        
+        var vm = new Vue({
+            el:"#box",
+            data:{
+                value:"<h1>按钮</h1>"
+            }
+        })
+    </script>
+
+</body>
+</html>

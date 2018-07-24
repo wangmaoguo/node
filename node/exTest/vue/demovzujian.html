@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            line-height: 30px;
+            padding: 10px;
+        }
+        input[type="radio"],input[type="checkbox"]{
+            height: 20px;
+            width: 20px;
+        }
+        input, select{
+            height: 30px;
+            margin: 5px;
+            padding-left: 5px;
+        }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="box">
+        <who></who><!-- 使用和组件名称相同的html标签调用 -->
+    </div>
+
+<script>
+      var item = Vue.extend({  /*使用extend添加一个对象*/
+        data:function(){    /*在data中返回的对象，就是组件具备的数据源  和实例中的 data作用一致*/
+            return {
+                msg:"他是小明"        /*数据包含一个数据msg*/
+            }
+        },
+        template:'<h1>{{msg}}</h1>'  /* template（模板）是用于显示在页面中的内容，模板的值，就是一个html字符串，内部可以自由使用值或指令 */
+    });
+
+    Vue.component("who",item);   /*使用 Vue.componet 将上面的对象定义为组件*/
+
+    var vm = new Vue({
+        el:"#box",
+        data:{
+        }
+    })
+</script>
+
+</body>
+</html>

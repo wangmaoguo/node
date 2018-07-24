@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            line-height: 30px;
+            padding: 10px;
+        }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="box">
+        <p v-test>测试：红色</p>
+        <p v-test-blue>测试：蓝色</p>
+        <p v-test-orange="{'color':'orange'}">测试：橘色</p>
+        <p v-test-green="{'color':'green'}">测试：绿色</p>
+    </div>
+    
+    <script>
+        /*自定义指令*/
+        Vue.directive("test",function(el){ /* el就是页面的dom */
+            el.style.color="red";
+        })
+
+        /*  如果使用了驼峰命名指令，那么页面使用的时候需要改成横杠链接 */
+        Vue.directive("testBlue",function(el){
+            el.style.color="blue";
+        })
+        
+        Vue.directive("test-orange",function(el,args){
+            el.style.color=args.value.color;
+        })
+
+        var vm= new Vue({
+            el:"#box",
+            data:{
+
+            },
+            directives:{  /* 在new Vue内部，可以使用 directives定义多个指令，和前面直接通过 Vue.dirctive一样的写法。 */
+            "test-green":function(el,args){  /*传过来的json格式参数，存在 args.value中*/
+                el.style.color = args.value.color;
+            },
+            "test-other":function(){
+                
+            }
+        }
+        })
+    </script>
+
+</body>
+</html>

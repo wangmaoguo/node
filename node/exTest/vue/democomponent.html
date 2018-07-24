@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="box">
+    <aaa></aaa>
+</div>
+
+<!--模板可以使用 template标签写到外面，然后在 componets里面调用-->
+<template id="temA">  
+    <div>
+        <h3>我是:{{msg}}</h3>
+        <bbb></bbb>  <!-- 调用子组件 -->
+    </div>
+</template>
+
+<script>
+    var vm=new Vue({
+        el:'#box',
+        components:{
+            'aaa':{
+                data:function(){
+                    return{
+                        msg:'父组件'
+                    }
+                },
+                methods:{
+                    test:function(){
+                        alert("我是父组件")
+                    }
+                },
+                template:'#temA',/*父组件的模板*/
+                components:{
+                    'bbb':{
+                        template:"<h3>我是子组件</h3>"
+                    }
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
